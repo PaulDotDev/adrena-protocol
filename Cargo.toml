@@ -1,0 +1,28 @@
+[workspace]
+members = ["programs/*"]
+resolver = "2"
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1
+
+[profile.release.build-override]
+opt-level = 3
+incremental = false
+codegen-units = 1
+
+# Need to force some package, otherwise get conflicts, due to dependencies importing conflicting versions
+#
+# Plus
+#
+# Forked solana to apply a patch and fix how programs are load due to a lifetime solana VS anchor compatibility issue
+# Hopefully temporary: https://github.com/dankelleher/solana/commit/3c285b5574722bd8e7ec4c7f659ec769b9aba5ce
+#
+# Because we can't have two solana dependencies, we need to force the version of the forked solana
+#
+[patch.crates-io]
+solana-program-test = { git = "https://github.com/AdrenaFoundation/agave", branch = "v1.18.22-patched" }
+solana-program = { git = "https://github.com/AdrenaFoundation/agave", branch = "v1.18.22-patched" }
+solana-sdk = { git = "https://github.com/AdrenaFoundation/agave", branch = "v1.18.22-patched" }
+anchor-lang = { git = "https://github.com/coral-xyz/anchor", tag = "v0.29.0" }

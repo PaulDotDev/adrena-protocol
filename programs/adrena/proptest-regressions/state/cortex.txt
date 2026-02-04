@@ -1,0 +1,12 @@
+# Seeds for failure cases proptest has generated in the past. It is
+# automatically read and these particular cases re-run before any
+# novel cases are generated.
+#
+# It is recommended to check this file in to source control so that
+# everyone who runs the test benefits from these saved cases.
+cc c101fd66d4a78a7d9fda52dfe5c41f6ece4623a2b1620a6fc2ad6913bee36810 # shrinks to fee_amount = 0.0
+cc 04be3d9abc10599e519c50d073e9ba4403b370a56d4f9bb6fac19d67403d02d1 # shrinks to initial_amount = 1, lm_emission_potentiometer_bps = 15000
+cc a378320ffe337e9cd12057c1c98c8fac1bcff1caef4b24575bfd306857312cd7 # shrinks to initial_amount = 7988024108478565633, lm_emission_potentiometer_bps = 23093
+cc bc8b77a1779392ca84da7f28c374f8a8f4f617a7c5a4a2c668b1913664e17687 # shrinks to initial_amount = 9981464246366295989, lm_emission_potentiometer_bps = 18481
+cc 9175d7b0f61d5636c048515a7bffd687dde9e58fb093416e0c1428bd8e8bc00f # shrinks to initial_amount = 14834534840136350315, lm_emission_potentiometer_bps = 12435
+cc 4e407b283977175630251721299e763d600cf71bf52eb85cffc4779c3f3b41bd # shrinks to initial_amount = 15774537432623184211, lm_emission_potentiometer_bps = 11694

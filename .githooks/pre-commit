@@ -1,0 +1,23 @@
+#!/bin/bash
+
+fmt=$(cargo +nightly fmt -- --check)
+result_fmt=$?
+
+if [[ ${result_fmt} -ne 0 ]] ; then
+    cat <<\EOF
+There are some code style issues, run `cargo +nightly fmt` first.
+EOF
+    exit 1
+fi
+
+clippy=$(RUSTFLAGS="-Dwarnings" cargo clippy --all-targets --all-features)
+result_clippy=$?
+
+if [[ ${result_clippy} -ne 0 ]] ; then
+    cat <<\EOF
+There are some issues found by clippy, run `RUSTFLAGS="-Dwarnings" cargo clippy --all-targets --all-features` first.
+EOF
+    exit 1
+fi
+
+exit 0

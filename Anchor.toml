@@ -1,0 +1,24 @@
+[toolchain]
+anchor_version = "0.29.0"
+solana_version = "1.18.22"
+
+[features]
+seeds = false
+resolution = false
+skip-lint = false
+[programs.localnet]
+adrena = "13gDzEXCdocbj8iAiqrScGo47NiSuYENGsRqi3SEAwet"
+[programs.devnet]
+adrena = "13gDzEXCdocbj8iAiqrScGo47NiSuYENGsRqi3SEAwet"
+[programs.mainnet]
+adrena = "13gDzEXCdocbj8iAiqrScGo47NiSuYENGsRqi3SEAwet"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = ""

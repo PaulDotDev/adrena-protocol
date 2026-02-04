@@ -1,0 +1,61 @@
+use {
+    crate::utils::{self, pda},
+    adrena::instructions::InitStakingOneParams,
+    anchor_lang::{prelude::Pubkey, ToAccountMetas},
+    solana_program_test::{BanksClientError, ProgramTestContext},
+    solana_sdk::signer::{keypair::Keypair, Signer},
+    tokio::sync::RwLock,
+};
+
+pub async fn init_staking_one(
+    program_test_ctx: &RwLock<ProgramTestContext>,
+    admin: &Keypair,
+    payer: &Keypair,
+    fee_redistribution_mint: &Pubkey,
+    staked_token_mint: &Pubkey,
+    params: &InitStakingOneParams,
+) -> std::result::Result<(Pubkey, u8), BanksClientError> {
+    // ==== WHEN ==============================================================
+    let transfer_authority_pda = pda::get_transfer_authority_pda().0;
+    let cortex_pda = pda::get_cortex_pda().0;
+    let (staking_pda, staking_bump) = pda::get_staking_pda(staked_token_mint);
+    let lm_token_mint_pda = pda::get_lm_token_mint_pda().0;
+    let staking_staked_token_vault_pda = pda::get_staking_staked_token_vault_pda(&staking_pda).0;
+
+    let (ix_size, tx_used_cu) = utils::create_and_execute_adrena_ix(
+        program_test_ctx,
+        adrena::accounts::InitStakingOne {
+            admin: admin.pubkey(),
+            payer: payer.pubkey(),
+            transfer_authority: transfer_authority_pda,
+            staking: staking_pda,
+            lm_token_mint: lm_token_mint_pda,
+            cortex: cortex_pda,
+            staking_staked_token_vault: staking_staked_token_vault_pda,
+            fee_redistribution_mint: *fee_redistribution_mint,
+            staking_staked_token_mint: *staked_token_mint,
+            adrena_program: adrena::ID,
+            system_program: anchor_lang::system_program::ID,
+            token_program: anchor_spl::token::ID,
+            rent: solana_program::sysvar::rent::ID,
+        }
+        .to_account_metas(None),
+        adrena::instruction::InitStakingOne {
+            params: InitStakingOneParams {
+                staking_type: params.staking_type,
+            },
+        },
+        Some(&payer.pubkey()),
+        &[admin, payer],
+        None,
+        None,
+    )
+    .await?;
+
+    utils::log_instruction("init_staking_one", "admin", ix_size, tx_used_cu);
+
+    // ==== THEN ==============================================================
+    // TODO, check the created staking account
+
+    Ok((staking_pda, staking_bump))
+}

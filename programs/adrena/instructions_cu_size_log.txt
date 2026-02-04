@@ -1,0 +1,75 @@
+
+Category: admin
+Instruction                                Compute Units                 TX Byte Size                
+                                         Max            Min            Max           Min          
+------------------------------------------------------------------------------------
+add_custody                              51488          34988          659           659          
+add_pool_part_one                        74291          74291          572           572          
+add_pool_part_two                        417424         417424         485           485          
+add_vest                                 157788         118513         459           459          
+delete_user_profile                      6572           6572           260           260          
+disable_tokens_freeze_capabilities       23838          23838          294           294          
+finalize_genesis_lock_campaign           8673           8673           294           294          
+init_four_vesting                        16203          16203          328           328          
+init_one_core                            35957          35957          420           420          
+init_oracle                              19022          16532          363           297          
+init_staking_four                        26168          26002          532           532          
+init_staking_one                         34469          34302          499           499          
+init_staking_three                       28149          28149          396           396          
+init_staking_two                         28121          28121          396           396          
+init_three_governance                    18870          18870          396           396          
+init_two_lm_token_metadata               50128          50128          396           396          
+mint_lm_tokens_from_bucket               22105          22005          325           314          
+mint_staked_lm_tokens_from_bucket        49759          49759          527           527          
+set_custody_config                       49762          37624          385           385          
+set_custody_max_cumulative_short_posi... 7630           7630           200           200          
+set_pool_allow_swap                      5435           5435           159           159          
+set_pool_allow_trade                     5435           5435           159           159          
+set_pool_aum_soft_cap_usd                6004           6004           166           166          
+set_pool_liquidity_state                 5451           5451           159           159          
+set_pool_whitelisted_swapper             28927          19495          192           192          
+set_protocol_fee_recipient               18203          18086          192           192          
+set_staking_lm_emission_potentiometer    5283           5283           160           160          
+set_stop_loss_long                       8708           8708           243           243          
+set_stop_loss_short                      8650           8650           243           243          
+set_take_profit_long                     8966           8966           234           234          
+set_take_profit_short                    8906           8906           234           234          
+swap                                     200344         190669         669           652          
+
+Category: public
+Instruction                                Compute Units                 TX Byte Size                
+                                         Max            Min            Max           Min          
+------------------------------------------------------------------------------------
+add_collateral_long                      64145          62917          559           542          
+add_collateral_short                     63713          63317          593           593          
+add_liquid_stake                         207198         101733         880           880          
+add_liquidity                            298541         138331         737           635          
+add_locked_stake                         97533          85310          748           748          
+cancel_stop_loss                         8434           8053           226           226          
+cancel_take_profit                       8433           8053           226           226          
+claim_referral_fee                       44537          44537          328           328          
+claim_stakes                             1216437        33996          690           669          
+claim_vest                               107554         95978          702           702          
+close_position_long                      282204         99442          670           653          
+close_position_short                     103146         97038          704           704          
+distribute_fees                          177801         177801         925           925          
+edit_user_profile                        29923          4137           379           231          
+finalize_locked_stake                    187076         182538         609           609          
+increase_position_long                   136080         125553         673           656          
+increase_position_short                  135022         132226         707           707          
+init_user_profile                        28063          18888          347           341          
+init_user_staking                        37787          31787          634           634          
+liquidate_long                           334089         323994         619           602          
+liquidate_short                          330929         330929         653           653          
+open_or_increase_position_with_swap_long 463789         222997         741           741          
+open_or_increase_position_with_swap_s... 244535         227668         809           809          
+open_position_long                       132191         119019         673           656          
+open_position_short                      140020         123966         707           690          
+remove_collateral_long                   89328          87317          559           542          
+remove_collateral_short                  87620          85972          593           576          
+remove_liquid_stake                      216085         178926         880           880          
+remove_liquidity                         300683         273288         703           601          
+remove_locked_stake                      143211         136039         914           914          
+resolve_staking_round                    192050         146640         498           498          
+sync_user_voting_power                   104512         24901          702           702          
+upgrade_locked_stake                     166506         159939         894           886          
